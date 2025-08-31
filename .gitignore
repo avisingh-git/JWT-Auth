@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/JWT-Auth/Migrations
+/JWT-Auth/Migrations/20250831121131_refreshToken.cs
+/JWT-Auth/Migrations/20250831121131_refreshToken.Designer.cs
+/JWT-Auth/Migrations/20250831121349_refreshTokenExpiry.cs
+/JWT-Auth/Migrations/20250831121349_refreshTokenExpiry.Designer.cs
+/JWT-Auth/Migrations/20250831121505_changeDataType.cs
+/JWT-Auth/Migrations/20250831121505_changeDataType.Designer.cs
