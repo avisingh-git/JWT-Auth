@@ -23,11 +23,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidIssuer = builder.Configuration.GetValue<string>("AppSettings:Issuer"),
             ValidateAudience = true,
-            ValidAudiences = new[] { builder.Configuration.GetValue<string>("AppSettings:Audience") },
+            ValidAudiences = [builder.Configuration.GetValue<string>("AppSettings:Audience")],
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(
-                System.Text.Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("AppSettings:Token")!))
+                System.Text.Encoding.UTF8.GetBytes(
+                    builder.Configuration.GetValue<string>("AppSettings:Token")!))
         }); ;
 
 builder.Services.AddScoped<IAuthService, AuthService>();

@@ -27,7 +27,8 @@ namespace JWT_Auth.Services
             {
                 return null;
             }
-            if (new PasswordHasher<User>().VerifyHashedPassword(user, user.PasswordHash, req.PasswordPlain)
+            if (new PasswordHasher<User>().VerifyHashedPassword(user, 
+                user.PasswordHash, req.PasswordPlain)
                 == PasswordVerificationResult.Failed)
             {
                 return null;
@@ -39,11 +40,13 @@ namespace JWT_Auth.Services
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.NameIdentifier, user.ID.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(configuration.GetValue<string>("AppSettings:Token")!));
+                Encoding.UTF8.GetBytes(
+                    configuration.GetValue<string>("AppSettings:Token")!));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
 
